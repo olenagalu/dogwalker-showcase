@@ -8,7 +8,7 @@ A web application for a dog walking and pet-care business, built to help custome
 
 I created Princess Dog Walker for my friend to support her growing pet-care business. The project brings service information, scheduling, customer accounts, and day-to-day booking management into one application.
 
-This public repository is a project overview. The application source code and development history are maintained separately in a private repository.
+This public repository contains a standalone, sanitized copy of the application for local demonstrations. The production application and its development history remain private.
 
 ## How it works
 
@@ -63,3 +63,32 @@ The frontend presents services and booking flows. The API handles account permis
 ## Project status
 
 Active development, with ongoing improvements to support the business and its customers.
+
+## Run the isolated local demo
+
+Install Docker, then run `docker compose up --build` and open http://localhost:5095.
+
+| Demo role | Email | Demo-only password |
+| --- | --- | --- |
+| Owner | owner@example.test | DemoOwner123! |
+| Customer | customer@example.test | DemoCustomer123! |
+| Assistant | assistant@example.test | DemoAssistant123! |
+
+All accounts and the sample dog are fictional. Use fictional inputs when exploring the demo.
+The demo database uses its own Docker volume and is separate from production. To reset it, run `docker compose down -v` (this deletes only this demo's volume).
+
+### What was changed for the showcase
+
+- Production URLs, contact details, personal names, photographs, and deployment settings were removed from the executable copy.
+- Email transports are no-ops, and Google sign-in is disabled. Email templates remain as code examples.
+- The API ignores inherited configuration and uses only the fixed local demo database. JWT signing keys are generated at startup, with separate demo issuer, audience, and browser session keys.
+- The browser calls only its own API origin. Its content security policy blocks external connections and frames.
+- Docker binds published ports to the local computer and keeps the API and database on an internal network without external routing. A local gateway forwards browser requests to the demo API.
+- The schema is created from the models; production migrations, data exports, credentials, uploaded media, and private Git history are not included.
+- Password reset codes are returned locally for demonstration. Assistant invitation emails are not delivered.
+
+The live-app link above is a documentation link only. No demo code calls the live application. This copy is for local review, not production deployment.
+
+## Tests
+
+Run `dotnet test` with the .NET 10 SDK. Frontend checks are in `tests/frontend/`.

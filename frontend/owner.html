@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="robots" content="noindex">
+  <title>Owner profile | Princess Dog Walker</title>
+  <link rel="stylesheet" href="css/styles.css?v=20260928-calendar-contrast">
+</head>
+<body><aside style="padding:12px;text-align:center;background:#fff0bd;color:#332b18">Local showcase demo · fictional data · no live bookings or emails</aside>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header"><div class="container nav"><a class="brand" href="index.html" aria-label="Princess Dog Walker home"><img class="brand-logo" src="assets/demo-pet.svg" alt=""><span>Princess Dog Walker</span></a><button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-links" aria-label="Open navigation">Menu</button><nav class="nav-links" id="nav-links"></nav></div></header>
+
+  <main id="main" class="customer-profile-page owner-profile-page"><section class="section-sm"><div class="container customer-profile-shell owner-profile-shell">
+    <header class="customer-profile-summary owner-profile-summary">
+      <div class="customer-profile-avatar owner-profile-avatar" aria-hidden="true">PDW</div>
+      <div><span class="eyebrow">Private business workspace</span><h1>Owner profile</h1><p>Manage requests, schedules, availability, customers, and booking history.</p></div>
+      <button class="button button-clay" id="refresh-owner" type="button">Refresh owner profile</button>
+    </header>
+
+    <div class="form-status" id="owner-status" role="status" aria-live="polite"></div>
+    <div class="customer-profile-layout owner-profile-layout">
+      <nav class="profile-settings-menu" aria-label="Owner profile sections">
+        <button class="profile-setting-button active" type="button" data-owner-panel="overview"><span><strong>Business overview</strong><small>Today’s owner workspace</small></span><span aria-hidden="true">›</span></button>
+        <button class="profile-setting-button" type="button" data-owner-panel="requests"><span><strong>Booking requests</strong><small><span id="owner-menu-request-count">0</span> waiting for approval</small></span><span aria-hidden="true">›</span></button>
+        <button class="profile-setting-button" type="button" data-owner-panel="schedule"><span><strong>Daily Schedule</strong><small>Confirmed bookings and calendar</small></span><span aria-hidden="true">›</span></button>
+        <button class="profile-setting-button" type="button" data-owner-panel="overnight"><span><strong>Overnight stays</strong><small>Occupied nights at a glance</small></span><span aria-hidden="true">›</span></button>
+        <button class="profile-setting-button" type="button" data-owner-panel="availability"><span><strong>Availability</strong><small>Block dates and hours</small></span><span aria-hidden="true">›</span></button>
+        <button class="profile-setting-button" type="button" data-owner-panel="customers"><span><strong>Customers &amp; dogs</strong><small>Accounts, approvals, and pets</small></span><span aria-hidden="true">›</span></button>
+        <button class="profile-setting-button" type="button" data-owner-panel="assistants"><span><strong>Assistants</strong><small>Invitations, status, and availability</small></span><span aria-hidden="true">›</span></button>
+        <button class="profile-setting-button" type="button" data-owner-panel="history"><span><strong>Booking history</strong><small>Completed, canceled, and declined bookings</small></span><span aria-hidden="true">›</span></button>
+      </nav>
+
+      <div class="profile-panel-area"><section class="profile-panel" data-owner-panel-name="assistants" id="owner-assistants" hidden><h2>Assistants / Pet Sitters</h2><form id="invite-assistant-form"><div class="field"><label for="assistant-name">Assistant name</label><input type="text" id="assistant-name" name="fullName" maxlength="120" autocomplete="off" required></div><div class="field"><label for="assistant-email">Assistant email</label><input type="email" id="assistant-email" name="email" maxlength="254" required></div><button class="button" type="submit">Invite Assistant</button></form><div id="owner-assistant-status" class="form-status" role="status"></div><h3>Pending invitations</h3><div id="owner-assistant-invitations"></div><h3>Existing assistants</h3><p>Freezing immediately blocks access and new bookings. Saved schedules and previous bookings are retained.</p><div id="owner-assistant-list"></div></section>
+        <section class="profile-panel" data-owner-panel-name="overview">
+          <div class="profile-panel-heading"><div><span class="eyebrow">At a glance</span><h2>Business overview</h2><p>Open a section to focus on one part of the business.</p></div></div>
+          <div class="owner-stat-grid">
+            <button type="button" class="owner-stat-card" data-open-owner-panel="requests"><strong id="owner-overview-request-count">0</strong><span>Requests waiting</span></button>
+            <button type="button" class="owner-stat-card" data-open-owner-panel="schedule" data-owner-focus="future"><strong id="owner-overview-future-count">0</strong><span>Future bookings</span></button>
+            <button type="button" class="owner-stat-card" data-open-owner-panel="history"><strong id="owner-overview-completed-count">0</strong><span>Completed bookings</span></button>
+            <button type="button" class="owner-stat-card" data-open-owner-panel="customers"><strong id="owner-overview-customer-count">0</strong><span>Registered customers</span></button>
+          </div>
+          <h3 class="profile-subheading">Owner tools</h3>
+          <div class="owner-quick-links"><a href="services.html">Edit services and prices <span aria-hidden="true">›</span></a><a href="team.html">Manage the team page <span aria-hidden="true">›</span></a><a href="index.html">Edit homepage content <span aria-hidden="true">›</span></a></div>
+        </section>
+
+        <section class="profile-panel" data-owner-panel-name="requests" hidden>
+          <div class="profile-panel-heading"><div><span class="eyebrow">Needs your decision</span><h2>Booking requests</h2><p>Requests remain here until you approve or decline them. Approved requests move directly to Schedule.</p></div></div>
+          <div class="appointments owner-request-inbox" id="owner-booking-request-list"><div class="empty-state">Loading booking requests…</div></div>
+        </section>
+
+        <section class="profile-panel owner-wide-panel" data-owner-panel-name="schedule" hidden>
+          <div class="owner-calendar-panel"><div class="calendar-view-switch owner-view-switch" role="group" aria-label="Owner calendar view"><button class="calendar-view-button active" type="button" data-owner-calendar-view="month" aria-pressed="true">Month</button><button class="calendar-view-button" type="button" data-owner-calendar-view="week" aria-pressed="false">Hourly view</button></div><div class="owner-calendar-toolbar"><button class="calendar-nav-button" id="owner-calendar-prev" type="button" aria-label="Previous month">←</button><div><span class="eyebrow" id="owner-calendar-view-label">Month view</span><h3 id="owner-calendar-month">Booking calendar</h3></div><button class="calendar-nav-button" id="owner-calendar-next" type="button" aria-label="Next month">→</button></div><div class="booking-legend" id="booking-legend"></div><div class="owner-month-calendar" id="owner-calendar-grid"><div class="empty-state">Loading calendar…</div></div></div>
+          <div class="profile-panel-heading"><div><span class="eyebrow">Confirmed care</span><h2>Daily Schedule</h2><p>Confirmed walks and visits appear here. Overnight care appears in Overnight stays.</p></div></div>
+          <div class="owner-booking-tools">
+            <form class="panel-form profile-inner-form" id="owner-booking-form"><h3>Add booking for a customer</h3><div class="field"><label for="owner-book-customer">Customer</label><select id="owner-book-customer" required><option value="">Choose a customer</option></select></div><div class="field"><label for="owner-book-dog">Dog</label><select id="owner-book-dog" required disabled><option value="">Choose a customer first</option></select></div><div class="field"><label for="owner-book-service">Service</label><select id="owner-book-service" required><option value="">Choose a service</option></select></div><div class="form-grid"><div class="field"><label for="owner-book-date">Date</label><input type="date" id="owner-book-date" required></div><div class="field"><label for="owner-book-time">Open time</label><select id="owner-book-time" required disabled><option value="">Choose a service and date</option></select></div><div class="field" id="owner-book-end-field" hidden><label for="owner-book-end-date">Checkout date</label><input type="date" id="owner-book-end-date"></div></div><div class="field"><label for="owner-book-notes">Booking notes</label><textarea id="owner-book-notes" maxlength="2000" placeholder="Anything Demo Owner should remember for this visit"></textarea></div><button class="button button-clay" type="submit">Add confirmed booking</button><p class="hint">The customer must already have an approved account and a saved dog.</p></form>
+          </div>
+          <div id="daily-event-details"></div><h3 class="owner-list-heading">Confirmed daily bookings</h3><div class="appointments" id="owner-booking-list"><div class="empty-state">Loading confirmed bookings…</div></div>
+        </section>
+
+        <section class="profile-panel owner-wide-panel" data-owner-panel-name="overnight" hidden>
+          <div class="profile-panel-heading"><div><span class="eyebrow">Confirmed overnight care</span><h2>Overnight stays</h2><p>See each occupied night separately from daytime walks and visits.</p></div></div>
+          <div class="owner-calendar-panel"><div class="owner-calendar-toolbar"><button class="calendar-nav-button" id="owner-overnight-prev" type="button" aria-label="Previous month">←</button><h3 id="owner-overnight-month">Overnight calendar</h3><button class="calendar-nav-button" id="owner-overnight-next" type="button" aria-label="Next month">→</button></div><div class="owner-month-calendar owner-overnight-calendar" id="owner-overnight-calendar"><div class="empty-state">Loading overnight stays…</div></div></div>
+          <div id="overnight-booking-form-host"></div>
+          <h3>Confirmed overnight bookings</h3><div class="appointments" id="owner-overnight-list"></div>
+        </section>
+
+        <section class="profile-panel" data-owner-panel-name="availability" hidden>
+          <div class="profile-panel-heading"><div><span class="eyebrow">Owner scheduling</span><h2>Availability</h2><p>Block a whole date or only the hours when you cannot accept bookings.</p></div></div>
+          <div class="owner-availability-tools"><div><h3>Blocked dates and times</h3><div id="availability-rule-list" class="mini-card-list"></div></div><form class="panel-form profile-inner-form" id="availability-rule-form"><input type="hidden" id="rule-id"><h3 id="rule-form-title">Block an unavailable date</h3><div class="field calendar-field"><label for="rule-date">Choose date</label><input type="date" id="rule-date" required></div><div class="field"><label for="rule-block-type">How long are you unavailable?</label><select id="rule-block-type"><option value="day">The entire day</option><option value="hours">Specific hours</option></select></div><div class="form-grid" id="rule-time-fields" hidden><div class="field"><label for="rule-start">Unavailable from</label><input type="time" id="rule-start" value="09:00"></div><div class="field"><label for="rule-end">Unavailable until</label><input type="time" id="rule-end" value="17:00"></div></div><div class="field"><label for="rule-notes">Private note</label><input id="rule-notes" maxlength="300" placeholder="Vacation, appointment, day off…"></div><button class="button" type="submit">Block this time</button> <button class="link-button" id="clear-rule" type="button">Clear</button></form></div>
+        </section>
+
+        <section class="profile-panel" data-owner-panel-name="customers" hidden>
+          <div class="profile-panel-heading"><div><span class="eyebrow">Registered families</span><h2>Customers &amp; dogs</h2><p>Review service areas and see each customer’s saved dogs.</p></div></div>
+          <div class="profile-grid owner-customer-tools"><div><h3>Registered customers</h3><div class="mini-card-list" id="owner-customer-list"></div></div><form class="panel-form profile-inner-form" id="owner-customer-form"><h3>Add customer with dog</h3><p class="hint">This creates a customer profile Demo Owner can book for. The customer can later sign in with Google using the same email.</p><div class="field"><label for="owner-customer-name">Customer name</label><input id="owner-customer-name" name="fullName" maxlength="120" required></div><div class="field"><label for="owner-customer-email">Customer email</label><input type="email" id="owner-customer-email" name="email" maxlength="254" required></div><div class="field"><label for="owner-customer-phone">Customer phone</label><input type="tel" id="owner-customer-phone" name="phone" maxlength="30" required></div><div class="form-grid"><div class="field"><label for="owner-dog-name">Dog’s name</label><input id="owner-dog-name" name="dogName" maxlength="80" placeholder="e.g., Luna" required></div><div class="field"><label for="owner-dog-breed">Breed</label><input id="owner-dog-breed" name="dogBreed" maxlength="80" placeholder="e.g., Mixed breed"></div><div class="field"><label for="owner-dog-age">Age</label><input type="number" id="owner-dog-age" name="dogAge" min="0" max="30"></div></div><button class="button button-clay" type="submit">Add customer and dog</button></form></div>
+        </section>
+
+        <section class="profile-panel" data-owner-panel-name="history" hidden>
+          <div class="profile-panel-heading"><div><span class="eyebrow">Past decisions and care</span><h2>Booking history</h2><p>Completed and canceled services, along with declined requests, stay here for your records.</p></div></div>
+          <div class="owner-history-summary" aria-label="Booking history totals" aria-live="polite"><span><strong id="owner-history-total-count">0</strong> total history records</span><span><strong id="owner-cancelled-count">0</strong> canceled</span><span><strong id="owner-completed-count">0</strong> completed</span><span><strong id="owner-declined-count">0</strong> declined</span></div>
+          <div class="appointments" id="owner-booking-history"><div class="empty-state">Loading booking history…</div></div>
+        </section>
+      </div>
+    </div>
+  </div></section></main>
+  <dialog class="owner-edit-dialog" id="booking-decline-dialog"><form class="panel-form owner-inline-form" id="booking-decline-form"><div class="owner-dialog-heading"><div><span class="eyebrow">Booking request</span><h2>Decline and notify customer</h2></div><button class="owner-dialog-close" id="close-booking-decline" type="button" aria-label="Close">×</button></div><div class="field"><label for="booking-decline-email-option">Email to send</label><select id="booking-decline-email-option"><option value="Automatic">Send the automatic scheduling-conflict email</option><option value="Custom">Write my own email</option></select></div><div id="booking-custom-email-fields" hidden><div class="field"><label for="booking-custom-email-subject">Subject</label><input id="booking-custom-email-subject" maxlength="160" value="About your Princess Dog Walker booking request"></div><div class="field"><label for="booking-custom-email-message">Message</label><textarea id="booking-custom-email-message" maxlength="5000" rows="10" placeholder="Write the complete email exactly as the customer should receive it."></textarea></div></div><p class="hint" id="booking-auto-email-note">The automatic email politely explains that the request could not be approved because of a scheduling conflict.</p><div class="owner-dialog-actions"><button class="button button-clay" type="submit">Decline request and send email</button><button class="link-button" id="cancel-booking-decline" type="button">Cancel</button></div></form></dialog>
+  <script src="js/api.js"></script><script src="js/main.js?v=20260924-owner-profile"></script><script src="js/schedule-calendars.js"></script><script src="js/owner.js?v=20260928-shared-calendars"></script>
+  <script src="js/working-hours.js"></script>
+<script src="js/assistant-availability.js"></script><script src="js/owner-assistants.js"></script></body>
+</html>

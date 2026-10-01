@@ -1,0 +1,37 @@
+services:
+  database:
+    image: postgres:17-alpine
+    environment:
+      POSTGRES_DB: dogwalker_showcase
+      POSTGRES_USER: showcase
+      POSTGRES_PASSWORD: local-demo-only
+    volumes:
+      - showcase-data:/var/lib/postgresql/data
+    networks: [demo]
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U showcase -d dogwalker_showcase"]
+      interval: 3s
+      timeout: 3s
+      retries: 20
+  api:
+    build:
+      context: .
+      dockerfile: backend/PawsAndPaths.Api/Dockerfile
+    networks: [demo]
+    depends_on:
+      database:
+        condition: service_healthy
+  gateway:
+    image: nginx:alpine
+    ports:
+      - "127.0.0.1:5095:80"
+    volumes:
+      - ./frontend/nginx.conf:/etc/nginx/conf.d/default.conf:ro
+    networks: [edge, demo]
+    depends_on: [api]
+networks:
+  edge:
+  demo:
+    internal: true
+volumes:
+  showcase-data:

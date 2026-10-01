@@ -1,0 +1,7 @@
+**/bin/
+**/obj/
+.env*
+*.jpg
+*.zip
+*.log
+.DS_Store

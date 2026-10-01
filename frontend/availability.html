@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="See open Princess Dog Walker dates and times.">
+  <title>Availability | Princess Dog Walker</title>
+  <link rel="stylesheet" href="css/styles.css?v=20260928-emergency-calendar">
+</head>
+<body><aside style="padding:12px;text-align:center;background:#fff0bd;color:#332b18">Local showcase demo · fictional data · no live bookings or emails</aside>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div class="container nav">
+      <a class="brand" href="index.html" aria-label="Princess Dog Walker home">
+        <img class="brand-logo" src="assets/demo-pet.svg?v=20260912-logo" alt="">
+        <span>Princess Dog Walker</span>
+      </a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-links" aria-label="Open navigation">Menu</button>
+      <nav class="nav-links" id="nav-links" aria-label="Main navigation"></nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="page-hero availability-hero">
+      <div class="container">
+        <span class="eyebrow">Live availability</span>
+        <h1>Find their next good day.</h1>
+        <p class="lede">Browse Demo Owner’s current calendar, check unavailable times, and choose an open time to send a booking request.</p>
+      </div>
+    </section>
+
+    <section class="section-sm">
+      <div class="container availability-page">
+        <div class="availability-controls" aria-label="Calendar controls">
+          <div class="field availability-service-field">
+            <label for="availability-service">Service</label>
+            <select id="availability-service" aria-describedby="availability-service-hint">
+              <option value="">Loading services…</option>
+            </select>
+            <span class="hint" id="availability-service-hint">Times are calculated for the selected service length.</span>
+          </div>
+          <div class="field" id="calendar-view-control">
+            <span class="control-label">Calendar view</span>
+            <div class="calendar-view-switch" role="group" aria-label="Calendar view">
+              <button class="calendar-view-button active" type="button" data-calendar-view="month" aria-pressed="true">Month</button>
+              <button class="calendar-view-button" type="button" data-calendar-view="week" aria-pressed="false">Week</button>
+            </div>
+          </div>
+        </div>
+
+        <form class="overnight-range-form" id="overnight-range-form" hidden>
+          <div><span class="eyebrow">Check an overnight stay</span><h2>Which dates do you need?</h2><p>Enter check-in and checkout to see whether Demo Owner is available for the complete stay.</p></div>
+          <div class="overnight-range-fields">
+            <div class="field"><label for="overnight-check-in">Check-in</label><input type="date" id="overnight-check-in" required></div>
+            <div class="field"><label for="overnight-checkout">Checkout</label><input type="date" id="overnight-checkout" required></div>
+            <button class="button button-clay" type="submit">Check these dates</button>
+          </div>
+          <div class="overnight-range-result" id="overnight-range-result" role="status" hidden></div>
+        </form>
+
+        <div class="public-calendar-panel" id="availability-calendar-panel">
+          <div class="public-calendar-toolbar">
+            <button class="calendar-nav-button" id="public-calendar-prev" type="button" aria-label="Previous month">←</button>
+            <div class="calendar-heading">
+              <span class="eyebrow" id="calendar-view-label">Month view</span>
+              <h2 id="calendar-period" aria-live="polite"></h2>
+            </div>
+            <button class="calendar-nav-button" id="public-calendar-next" type="button" aria-label="Next month">→</button>
+          </div>
+
+          <p id="calendar-emergency-note" class="calendar-emergency-note" hidden></p>
+          <div id="calendar-grid" aria-live="polite"><div class="empty-state">Loading the current month…</div></div>
+
+          <section class="day-schedule" id="day-schedule" aria-live="polite" hidden>
+            <div class="day-schedule-heading">
+              <div>
+                <span class="eyebrow">Choose a time</span>
+                <h2 id="schedule-date"></h2>
+                <p id="schedule-service" class="hint"></p>
+              </div>
+              <div class="schedule-legend" aria-label="Schedule legend">
+                <span><i class="available"></i>Available</span>
+                <span><i class="emergency"></i>Emergency request</span>
+                <span><i class="booked"></i>Booked</span>
+                <span><i class="unavailable"></i>Unavailable</span>
+              </div>
+            </div>
+            <div id="timeline-list"></div>
+          </section>
+
+          <div class="booking-help"><strong>Privacy note:</strong> Taken periods never show customer or pet details. Select an available time to continue to the secure booking request.</div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container"><div class="footer-bottom">© <span data-year></span> Princess Dog Walker · <a href="book.html">Ready to book?</a></div></div>
+  </footer>
+  <script src="js/api.js"></script>
+  <script src="js/main.js?v=20260922-inline-owner"></script>
+  <script src="js/availability.js?v=20260928-emergency-calendar"></script>
+  <script src="js/working-hours.js?v=20260928-calendar-first"></script>
+</body>
+</html>
