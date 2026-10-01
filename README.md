@@ -6,9 +6,17 @@ A web application for a dog walking and pet-care business, built to help custome
 
 ## About the project
 
-I created Princess Dog Walker for my friend Julia to support her growing pet-care business. The project brings service information, scheduling, customer accounts, and day-to-day booking management into one application.
+I created Princess Dog Walker for my friend to support her growing pet-care business. The project brings service information, scheduling, customer accounts, and day-to-day booking management into one application.
 
 This public repository is a project overview. The application source code and development history are maintained separately in a private repository.
+
+## How it works
+
+1. Visitors browse services and check availability.
+2. Customers create an account, save their dogs, and select a service and available time. Overnight care uses check-in and checkout dates.
+3. The application validates the request against the schedule before saving the booking.
+4. The owner reviews requests and manages booking statuses, services, and schedule blocks.
+5. Customers follow their booking status from their dashboard. Assistant / pet-sitter accounts support team workflows.
 
 ## Main features
 
@@ -30,8 +38,6 @@ This public repository is a project overview. The application source code and de
 | Tests | xUnit |
 
 ## Application structure
-
-The application separates the browser interface, server-side business logic, and data storage:
 
 ```text
 Browser interface
