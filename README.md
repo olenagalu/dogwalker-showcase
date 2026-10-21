@@ -2,7 +2,7 @@
 
 A web application for a dog walking and pet-care business, built to help customers explore services, check availability, and request care while giving the business owner a central place to manage bookings.
 
-**[Visit the web app](https://princessdogwalker.onrender.com/assistant.html)**
+**[Visit the web app](https://princessdogwalker.com)**
 
 ## About the project
 
